@@ -64,6 +64,7 @@ function isNodeReadableStream(value: any): value is NodeReadableStream {
 
 function readerIterator<T>(reader: ReadableStreamDefaultReader<T>): AsyncIterableIterator<T> {
 	const iterator: ReaderIterator<T> = {
+		//@ts-expect-error
 		next() {
 			return reader.read();
 		},
