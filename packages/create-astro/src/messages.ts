@@ -86,7 +86,7 @@ export const getVersion = () =>
 					const { version } = JSON.parse(body);
 					v = version;
 				} catch (e) {
-					console.error('getVersion fail: ', e);
+					console.error('getVersion fail: ', `${registry}/astro/latest`, e);
 					v = 'latest';
 				}
 				resolve(v);
