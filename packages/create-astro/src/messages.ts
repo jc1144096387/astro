@@ -82,9 +82,14 @@ export const getVersion = () =>
 			let body = '';
 			res.on('data', (chunk) => (body += chunk));
 			res.on('end', () => {
-				const { version } = JSON.parse(body);
-				v = version;
-				resolve(version);
+				try {
+					const { version } = JSON.parse(body);
+					v = version;
+				} catch (e) {
+					console.error('getVersion fail: ', e);
+					v = 'latest';
+				}
+				resolve(v);
 			});
 		});
 	});
